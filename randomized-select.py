@@ -1,7 +1,13 @@
 import random
+import argparse
 
+# Function to partition the array around the pivot and return the pivot index
+# This will rearrange the elements in the array so that all elements less than the pivot
+# are on the left, and all elements greater than the pivot are on the right.
 def partition(arr, low, high):
     pivot_value = arr[high]
+    print(f"Chosen pivot: {pivot_value}")
+    print(f"Current array state: {arr}")
     i = low - 1
     for j in range(low, high):
         if arr[j] < pivot_value:
@@ -10,7 +16,7 @@ def partition(arr, low, high):
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
     return i + 1
 
-
+# Randomized Select function to find the k-th smallest element (order statistic) in the array
 def RANDOMIZED_SELECT(arr, left, right, k):
     if left == right:
         return arr[left]
@@ -24,7 +30,14 @@ def RANDOMIZED_SELECT(arr, left, right, k):
     else:
         return RANDOMIZED_SELECT(arr, pivot_index + 1, right, k)
 
+
 if __name__ == "__main__":
-    arr = [7, 10, 4, 3, 20, 15]
-    k = 3
+    # To run the script with different inputs, provide the k value and the list of elements as command line arguments
+    parser = argparse.ArgumentParser(description="Find the k-th smallest element in an array.")
+    parser.add_argument("-elements", nargs='+', type=int, help="The list of integers.")
+    parser.add_argument("-k", type=int, help="The order of the smallest element to find.")
+    args = parser.parse_args()
+    arr = args.elements
+    k = args.k
     kth_smallest = RANDOMIZED_SELECT(arr, 0, len(arr) - 1, k - 1)
+    print(f"The {k}-th smallest element is: {kth_smallest}")
