@@ -2,11 +2,9 @@
 import argparse
 
 # Function to partition the array around the pivot and return the pivot index
-def partition(arr, low, high, pivot_index):
-    print(f"Pivot Index: {pivot_index}")
-    # print(f"Pivot Valuearr[pivot_index]}")
-    pivot_value = arr[pivot_index]
-    arr[pivot_index], arr[high] = arr[high], arr[pivot_index]
+def partition(arr, low, high, pivot_value):
+    print(f"Pivot Value: {pivot_value}")
+    arr[high], arr[low] = arr[low], arr[high]  # Move pivot to end
     store_index = low
     for i in range(low, high):
         if arr[i] < pivot_value:
