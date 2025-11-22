@@ -4,7 +4,15 @@ import argparse
 # Function to partition the array around the pivot and return the pivot index
 def partition(arr, low, high, pivot_value):
     print(f"Pivot Value: {pivot_value}")
-    arr[high], arr[low] = arr[low], arr[high]  # Move pivot to end
+    
+    # Find the pivot and move it to the end
+    pivot_idx = -1
+    for i in range(low, high + 1):
+        if arr[i] == pivot_value:
+            pivot_idx = i
+            break
+    arr[high], arr[pivot_idx] = arr[pivot_idx], arr[high]
+
     store_index = low
     for i in range(low, high):
         if arr[i] < pivot_value:
@@ -42,7 +50,7 @@ def median_of_medians(arr, k):
     # Partition the original array around the pivot
     pivot_index = partition(arr, 0, len(arr) - 1, pivot)
     if k == pivot_index:
-        return arr[k]
+        return arr[pivot_index]
     elif k < pivot_index:
         return median_of_medians(arr[:pivot_index], k)
     else:
