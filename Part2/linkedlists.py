@@ -63,6 +63,14 @@ class LinkedList:
             print(current_node.data, end=" -> ")
             current_node = current_node.next
         print("None")
+    
+    def __str__(self):
+        elements = []
+        current_node = self.head
+        while current_node:
+            elements.append(str(current_node.data))
+            current_node = current_node.next
+        return " -> ".join(elements) + " -> None"
 
 
 def linked_list_examples():
@@ -77,9 +85,9 @@ def linked_list_examples():
     linked_list.insert_at_beginning(0)
     linked_list.insert_at_end(3)
 
-    print("List size:", linked_list.size())
     print("List after insertions:", linked_list)
-    
+    print("List size:", linked_list.size())
+
     print("Traversing the list:")
     linked_list.traverse()
     
