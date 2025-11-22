@@ -36,6 +36,7 @@ class Matrix:
     def __init__(self, rows, cols):
         self.rows = rows
         self.cols = cols
+        self.data = [[None for _ in range(cols)] for _ in range(rows)]
         for r in range(rows):
             for c in range(cols):
                 self.data[r][c] = None
@@ -75,6 +76,7 @@ def array_matrix_examples():
     print(my_matrix)
     
     # Set some values
+    print("\nSetting some values in the matrix: (0, 0, 1), (1, 1, 2), (2, 2, 3)")
     my_matrix.set(0, 0, 1)
     my_matrix.set(1, 1, 2)
     my_matrix.set(2, 2, 3)
