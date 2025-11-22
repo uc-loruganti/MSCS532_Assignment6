@@ -6,8 +6,8 @@ import argparse
 # are on the left, and all elements greater than the pivot are on the right.
 def partition(arr, low, high):
     pivot_value = arr[high]
-    print(f"Chosen pivot: {pivot_value}")
-    print(f"Current array state: {arr}")
+    # print(f"Chosen pivot: {pivot_value}")
+    # print(f"Current array state: {arr}")
     i = low - 1
     for j in range(low, high):
         if arr[j] < pivot_value:
@@ -24,7 +24,7 @@ def RANDOMIZED_SELECT(arr, left, right, k):
     
     arr[pivot_index], arr[right] = arr[right], arr[pivot_index]
     pivot_index = partition(arr, left, right)
-    print(f"Pivot index after partition: {pivot_index}")
+    # print(f"Pivot index after partition: {pivot_index}")
     if k == pivot_index:
         return arr[k]
     elif k < pivot_index:
