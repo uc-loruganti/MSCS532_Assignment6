@@ -21,8 +21,10 @@ def RANDOMIZED_SELECT(arr, left, right, k):
     if left == right:
         return arr[left]
     pivot_index = random.randint(left, right)
+    
     arr[pivot_index], arr[right] = arr[right], arr[pivot_index]
     pivot_index = partition(arr, left, right)
+    print(f"Pivot index after partition: {pivot_index}")
     if k == pivot_index:
         return arr[k]
     elif k < pivot_index:
@@ -39,5 +41,17 @@ if __name__ == "__main__":
     args = parser.parse_args()
     arr = args.elements
     k = args.k
+
+    if k < 1 or k > len(arr):
+        print("Error: k should be between 1 and the length of the array.")
+        exit(1)
+    
+    if(arr is None or len(arr) == 0):
+        print("Error: The array should not be empty.")
+        exit(1)
+    
+    print(f"Original array: {arr}")
+    print(f"Finding the {k}-th smallest element...")
+
     kth_smallest = RANDOMIZED_SELECT(arr, 0, len(arr) - 1, k - 1)
     print(f"The {k}-th smallest element is: {kth_smallest}")
